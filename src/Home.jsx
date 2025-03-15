@@ -29,6 +29,13 @@ const Home = () => {
     }
   };
 
+  const resetForm = () => {
+    setEmailContent("");
+    setTone("");
+    setGeneratedReply("");
+    setError("");
+  };
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
       <main className="container mx-auto px-4 py-8 max-w-3xl">
@@ -113,22 +120,90 @@ const Home = () => {
         </div>
 
         {generatedReply && (
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Generated Reply
-            </h2>
+          <div className="bg-white rounded-xl shadow-lg p-6 animate-fade-in">
+            <div className="text-center mb-6">
+              <div className="inline-block bg-green-100 rounded-full p-3">
+                <svg
+                  className="w-8 h-8 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800 mt-4">
+                Reply Generated Successfully!
+              </h2>
+              <p className="text-gray-600 mt-2">
+                Ready to craft another perfect response?
+              </p>
+            </div>
+
             <textarea
               readOnly
               value={generatedReply}
               rows="8"
               className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 mb-4 font-mono outline-none"
             />
-            <button
-              onClick={() => navigator.clipboard.writeText(generatedReply)}
-              className="w-full py-2 px-4 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium"
-            >
-              Copy to Clipboard
-            </button>
+
+            <div className="flex gap-4">
+              <button
+                onClick={() => navigator.clipboard.writeText(generatedReply)}
+                className="flex-1 py-2 px-4 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                Copy to Clipboard
+              </button>
+              <button
+                onClick={resetForm}
+                className="flex-1 py-2 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  ></path>
+                </svg>
+                Create New Reply
+              </button>
+            </div>
+
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-500">
+                Modified something?{" "}
+                <button
+                  onClick={handleSubmit}
+                  className="text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  Regenerate this reply
+                </button>
+              </p>
+            </div>
           </div>
         )}
       </main>
