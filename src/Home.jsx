@@ -41,7 +41,7 @@ const Home = () => {
     fetch(`${process.env.PUBLIC_URL}/mailGenius.pdf`)
       .then((response) => response.blob())
       .then((blob) => {
-        saveAs(blob, "mailGenius.pdf");
+        saveAs(blob, "mailGenius.zip");
       });
   };
 
