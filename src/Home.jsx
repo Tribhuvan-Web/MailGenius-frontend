@@ -38,10 +38,10 @@ const Home = () => {
   };
 
   const handleDownload = () => {
-    fetch(`${process.env.PUBLIC_URL}/mailGenius.pdf`)
+    fetch(`${process.env.PUBLIC_URL}/mailGenius.zip`)
       .then((response) => response.blob())
       .then((blob) => {
-        saveAs(blob, "mailGenius.pdf");
+        saveAs(blob, "mailGenius.zip");
       });
   };
 
