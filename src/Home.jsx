@@ -35,7 +35,15 @@ const Home = () => {
     setGeneratedReply("");
     setError("");
   };
-  
+
+  const handleDownload = () => {
+    fetch(`${process.env.PUBLIC_URL}/mailGenius.pdf`)
+      .then((response) => response.blob())
+      .then((blob) => {
+        saveAs(blob, "my-file.pdf");
+      });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
       <main className="container mx-auto px-4 py-8 max-w-3xl">
@@ -74,6 +82,15 @@ const Home = () => {
                 <option value="Professional">Professional</option>
                 <option value="Patience">Patience</option>
               </select>
+              <div className="mt-4 cursor-pointer" onClick={handleDownload}>
+                <a
+                  onClick={handleDownload} // Replace with your actual ZIP file URL
+                  download
+                  className="inline-block w-full py-2 px-4 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium text-center"
+                >
+                  Use it as a extension
+                </a>
+              </div>
             </div>
 
             <button
