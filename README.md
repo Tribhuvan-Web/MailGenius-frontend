@@ -59,11 +59,6 @@ docker build -t mail-genius .
 docker run -p 8080:8080 mail-genius
 ```
 
-## API Reference
-### Base : https://mailgenius.onrender.com/api/email
-
-# Generate Email Reply - README
-
 ## Overview
 
 This application offers an API endpoint to generate email replies based on input parameters such as the message content and the desired tone. It is particularly helpful for automating professional or custom email responses.
@@ -88,9 +83,6 @@ The request body should include the following parameters in JSON format:
   "tone": "Professional"
 }
 ```
-# Preview
-
-https://github.com/user-attachments/assets/21cb5c7a-d25d-4246-af07-2188ca28ae52
 
 ## Controller Implementation
 
@@ -108,5 +100,9 @@ public class EmailGeneratorController {
         return ResponseEntity.ok(response);
     }
 }
+
 ```
+# Preview
+
+https://github.com/user-attachments/assets/21cb5c7a-d25d-4246-af07-2188ca28ae52
 
