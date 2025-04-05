@@ -88,7 +88,9 @@ The request body should include the following parameters in JSON format:
   "tone": "Professional"
 }
 ```
-# Code Structure
+# Preview
+
+https://github.com/user-attachments/assets/21cb5c7a-d25d-4246-af07-2188ca28ae52
 
 ## Controller Implementation
 
